@@ -1,17 +1,17 @@
+"use client";
 
-"use client"
-
-import { useState, useMemo } from "react"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import Link from "next/link"
+import { useState, useMemo } from "react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 import Button from "@mui/material/Button";
-import Divider from '@mui/material/Divider';
-
-
-// import { Separator } from "@/components/ui/separator"
-// import { Button } from "@/components/ui/button"
+import Divider from "@mui/material/Divider";
 
 export default function Component() {
   const [filters, setFilters] = useState({
@@ -19,7 +19,7 @@ export default function Component() {
     color: [],
     gemType: [],
     treatments: [],
-  })
+  });
   const products = [
     {
       id: 1,
@@ -81,35 +81,40 @@ export default function Component() {
       treatments: ["Heat Treated"],
       price: 399.99,
     },
-  ]
+  ];
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       if (filters.shape.length > 0 && !filters.shape.includes(product.shape)) {
-        return false
+        return false;
       }
       if (filters.color.length > 0 && !filters.color.includes(product.color)) {
-        return false
+        return false;
       }
-      if (filters.gemType.length > 0 && !filters.gemType.includes(product.gemType)) {
-        return false
+      if (
+        filters.gemType.length > 0 &&
+        !filters.gemType.includes(product.gemType)
+      ) {
+        return false;
       }
       if (
         filters.treatments.length > 0 &&
-        !filters.treatments.some((treatment) => product.treatments.includes(treatment))
+        !filters.treatments.some((treatment) =>
+          product.treatments.includes(treatment)
+        )
       ) {
-        return false
+        return false;
       }
-      return true
-    })
-  }, [filters])
+      return true;
+    });
+  }, [filters]);
   const handleFilterChange = (type, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [type]: prevFilters[type].includes(value)
         ? prevFilters[type].filter((item) => item !== value)
         : [...prevFilters[type], value],
-    }))
-  }
+    }));
+  };
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 p-4 md:p-6">
       <div className="bg-white dark:bg-gray-950 rounded-lg shadow-sm">
@@ -125,42 +130,54 @@ export default function Component() {
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.shape.includes("Round")}
-                      onCheckedChange={() => handleFilterChange("shape", "Round")}
+                      onCheckedChange={() =>
+                        handleFilterChange("shape", "Round")
+                      }
                     />
                     Round
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.shape.includes("Oval")}
-                      onCheckedChange={() => handleFilterChange("shape", "Oval")}
+                      onCheckedChange={() =>
+                        handleFilterChange("shape", "Oval")
+                      }
                     />
                     Oval
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.shape.includes("Cushion")}
-                      onCheckedChange={() => handleFilterChange("shape", "Cushion")}
+                      onCheckedChange={() =>
+                        handleFilterChange("shape", "Cushion")
+                      }
                     />
                     Cushion
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.shape.includes("Cabochon")}
-                      onCheckedChange={() => handleFilterChange("shape", "Cabochon")}
+                      onCheckedChange={() =>
+                        handleFilterChange("shape", "Cabochon")
+                      }
                     />
                     Cabochon
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.shape.includes("Cluster")}
-                      onCheckedChange={() => handleFilterChange("shape", "Cluster")}
+                      onCheckedChange={() =>
+                        handleFilterChange("shape", "Cluster")
+                      }
                     />
                     Cluster
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.shape.includes("Freeform")}
-                      onCheckedChange={() => handleFilterChange("shape", "Freeform")}
+                      onCheckedChange={() =>
+                        handleFilterChange("shape", "Freeform")
+                      }
                     />
                     Freeform
                   </Label>
@@ -183,35 +200,45 @@ export default function Component() {
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.color.includes("Blue")}
-                      onCheckedChange={() => handleFilterChange("color", "Blue")}
+                      onCheckedChange={() =>
+                        handleFilterChange("color", "Blue")
+                      }
                     />
                     Blue
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.color.includes("Green")}
-                      onCheckedChange={() => handleFilterChange("color", "Green")}
+                      onCheckedChange={() =>
+                        handleFilterChange("color", "Green")
+                      }
                     />
                     Green
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.color.includes("Yellow")}
-                      onCheckedChange={() => handleFilterChange("color", "Yellow")}
+                      onCheckedChange={() =>
+                        handleFilterChange("color", "Yellow")
+                      }
                     />
                     Yellow
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.color.includes("Purple")}
-                      onCheckedChange={() => handleFilterChange("color", "Purple")}
+                      onCheckedChange={() =>
+                        handleFilterChange("color", "Purple")
+                      }
                     />
                     Purple
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.color.includes("Brown")}
-                      onCheckedChange={() => handleFilterChange("color", "Brown")}
+                      onCheckedChange={() =>
+                        handleFilterChange("color", "Brown")
+                      }
                     />
                     Brown
                   </Label>
@@ -221,48 +248,62 @@ export default function Component() {
           </Accordion>
           <Accordion type="single" collapsible>
             <AccordionItem value="gemType">
-              <AccordionTrigger className="text-base">Gem Type</AccordionTrigger>
+              <AccordionTrigger className="text-base">
+                Gem Type
+              </AccordionTrigger>
               <AccordionContent>
                 <div className="grid gap-2">
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.gemType.includes("Amethyst")}
-                      onCheckedChange={() => handleFilterChange("gemType", "Amethyst")}
+                      onCheckedChange={() =>
+                        handleFilterChange("gemType", "Amethyst")
+                      }
                     />
                     Amethyst
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.gemType.includes("Citrine")}
-                      onCheckedChange={() => handleFilterChange("gemType", "Citrine")}
+                      onCheckedChange={() =>
+                        handleFilterChange("gemType", "Citrine")
+                      }
                     />
                     Citrine
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.gemType.includes("Ruby")}
-                      onCheckedChange={() => handleFilterChange("gemType", "Ruby")}
+                      onCheckedChange={() =>
+                        handleFilterChange("gemType", "Ruby")
+                      }
                     />
                     Ruby
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.gemType.includes("Emerald")}
-                      onCheckedChange={() => handleFilterChange("gemType", "Emerald")}
+                      onCheckedChange={() =>
+                        handleFilterChange("gemType", "Emerald")
+                      }
                     />
                     Emerald
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.gemType.includes("Quartz")}
-                      onCheckedChange={() => handleFilterChange("gemType", "Quartz")}
+                      onCheckedChange={() =>
+                        handleFilterChange("gemType", "Quartz")
+                      }
                     />
                     Quartz
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.gemType.includes("Sapphire")}
-                      onCheckedChange={() => handleFilterChange("gemType", "Sapphire")}
+                      onCheckedChange={() =>
+                        handleFilterChange("gemType", "Sapphire")
+                      }
                     />
                     Sapphire
                   </Label>
@@ -272,27 +313,35 @@ export default function Component() {
           </Accordion>
           <Accordion type="single" collapsible>
             <AccordionItem value="treatments">
-              <AccordionTrigger className="text-base">Treatments</AccordionTrigger>
+              <AccordionTrigger className="text-base">
+                Treatments
+              </AccordionTrigger>
               <AccordionContent>
                 <div className="grid gap-2">
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.treatments.includes("Heat Treated")}
-                      onCheckedChange={() => handleFilterChange("treatments", "Heat Treated")}
+                      onCheckedChange={() =>
+                        handleFilterChange("treatments", "Heat Treated")
+                      }
                     />
                     Heat Treated
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.treatments.includes("Oiled")}
-                      onCheckedChange={() => handleFilterChange("treatments", "Oiled")}
+                      onCheckedChange={() =>
+                        handleFilterChange("treatments", "Oiled")
+                      }
                     />
                     Oiled
                   </Label>
                   <Label className="flex items-center gap-2 font-normal">
                     <Checkbox
                       checked={filters.treatments.includes("None")}
-                      onCheckedChange={() => handleFilterChange("treatments", "None")}
+                      onCheckedChange={() =>
+                        handleFilterChange("treatments", "None")
+                      }
                     />
                     None
                   </Label>
@@ -304,7 +353,10 @@ export default function Component() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProducts.map((product) => (
-          <div key={product.id} className="bg-white dark:bg-gray-950 rounded-lg shadow-sm overflow-hidden">
+          <div
+            key={product.id}
+            className="bg-white dark:bg-gray-950 rounded-lg shadow-sm overflow-hidden"
+          >
             <Link href="#" className="block" prefetch={false}>
               <img
                 src="/placeholder.svg"
@@ -328,17 +380,20 @@ export default function Component() {
                   <span key={index}>{treatment}</span>
                 ))}
               </div>
-              <div className="mt-4 font-semibold">${product.price.toFixed(2)}</div>
-              <Button variant="outline" className="w-full  mt-4" 
-              sx={{
-               
-                color: 'white',
-                backgroundColor: 'black',
-                '&:hover': {
-                  backgroundColor: 'black',
-                },
-              
-              }}>
+              <div className="mt-4 font-semibold">
+                ${product.price.toFixed(2)}
+              </div>
+              <Button
+                variant="outline"
+                className="w-full  mt-4"
+                sx={{
+                  color: "white",
+                  backgroundColor: "black",
+                  "&:hover": {
+                    backgroundColor: "black",
+                  },
+                }}
+              >
                 Add to Cart
               </Button>
             </div>
@@ -346,5 +401,5 @@ export default function Component() {
         ))}
       </div>
     </div>
-  )
+  );
 }
