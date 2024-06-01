@@ -24,12 +24,13 @@ const Page = ()=> {
                             Explore our curated collection of high-quality home goods and furnishings to elevate your living space.
                         </p>
                         <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                            <Button variant="contained">
+                           
+                           <Link href={"/app/shop"}>
+                            <Button variant="contained" href="">
                                 Shop Now
                             </Button>
-                            <Button variant="outlined">
-                                Learn More
-                            </Button>
+                            </Link>
+                           
                         </div>
                     </div>
                 </div>
@@ -68,9 +69,7 @@ const Page = ()=> {
                         <Button  variant="contained">
                            View Catalog
                         </Button>
-                        <Button variant="outlined">
-                            Learn More
-                        </Button>
+                     
                     </div>
                 </div>
             </section>
