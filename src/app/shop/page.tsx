@@ -12,9 +12,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import GemsCard from "@/components/gemsCard";
 
 export default function Component() {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<any>({
     shape: [],
     color: [],
     gemType: [],
@@ -22,9 +23,9 @@ export default function Component() {
   });
   const products = [
     {
-      id: 1,
+      id: "1",
       name: "Amethyst Cluster",
-      image: "/placeholder.svg",
+      image: "/images/redGem.jpg",
       shape: "Cluster",
       color: "Purple",
       gemType: "Amethyst",
@@ -32,9 +33,9 @@ export default function Component() {
       price: 99.99,
     },
     {
-      id: 2,
+      id: "2",
       name: "Citrine Pendant",
-      image: "/placeholder.svg",
+      image: "/images/redGem.jpg",
       shape: "Oval",
       color: "Yellow",
       gemType: "Citrine",
@@ -42,7 +43,7 @@ export default function Component() {
       price: 49.99,
     },
     {
-      id: 3,
+      id: "3",
       name: "Ruby Cabochon",
       image: "/placeholder.svg",
       shape: "Cabochon",
@@ -52,7 +53,7 @@ export default function Component() {
       price: 199.99,
     },
     {
-      id: 4,
+      id: "4",
       name: "Emerald Cushion Cut",
       image: "/placeholder.svg",
       shape: "Cushion",
@@ -62,7 +63,7 @@ export default function Component() {
       price: 299.99,
     },
     {
-      id: 5,
+      id: "5",
       name: "Smoky Quartz Freeform",
       image: "/placeholder.svg",
       shape: "Freeform",
@@ -72,7 +73,7 @@ export default function Component() {
       price: 79.99,
     },
     {
-      id: 6,
+      id: "6",
       name: "Sapphire Round Brilliant",
       image: "/placeholder.svg",
       shape: "Round",
@@ -98,7 +99,7 @@ export default function Component() {
       }
       if (
         filters.treatments.length > 0 &&
-        !filters.treatments.some((treatment) =>
+        !filters.treatments.some((treatment: string) =>
           product.treatments.includes(treatment)
         )
       ) {
@@ -107,11 +108,11 @@ export default function Component() {
       return true;
     });
   }, [filters]);
-  const handleFilterChange = (type, value) => {
-    setFilters((prevFilters) => ({
+  const handleFilterChange = (type: string, value: string) => {
+    setFilters((prevFilters: { [x: string]: any; }) => ({
       ...prevFilters,
       [type]: prevFilters[type].includes(value)
-        ? prevFilters[type].filter((item) => item !== value)
+        ? prevFilters[type].filter((item: string) => item !== value)
         : [...prevFilters[type], value],
     }));
   };
@@ -353,51 +354,7 @@ export default function Component() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white dark:bg-gray-950 rounded-lg shadow-sm overflow-hidden"
-          >
-            <Link href="#" className="block" prefetch={false}>
-              <img
-                src="/placeholder.svg"
-                alt={product.name}
-                width={400}
-                height={400}
-                className="w-full h-56 object-cover"
-              />
-            </Link>
-            <div className="p-4">
-              <h3 className="text-lg font-semibold">{product.name}</h3>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <span>{product.shape}</span>
-                <Divider orientation="vertical" className="h-4" />
-                <span>{product.color}</span>
-                <Divider orientation="vertical" className="h-4" />
-                <span>{product.gemType}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
-                {product.treatments.map((treatment, index) => (
-                  <span key={index}>{treatment}</span>
-                ))}
-              </div>
-              <div className="mt-4 font-semibold">
-                ${product.price.toFixed(2)}
-              </div>
-              <Button
-                variant="outline"
-                className="w-full  mt-4"
-                sx={{
-                  color: "white",
-                  backgroundColor: "black",
-                  "&:hover": {
-                    backgroundColor: "black",
-                  },
-                }}
-              >
-                Add to Cart
-              </Button>
-            </div>
-          </div>
+            <GemsCard key={product.id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product.id} treatments={product.treatments}/>
         ))}
       </div>
     </div>

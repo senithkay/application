@@ -115,37 +115,43 @@ export default function DrawerAppBar(props: Props) {
                         <MenuItem>
                             <BasicPopover />
                         </MenuItem>
-                        <Box className={'flex items-center ml-[10px]'} sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt={user.name??'User' } src={getServerImagesUrl(user.image??'')} />
-                                </IconButton>
-                            </Tooltip>
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting) => (
-                                    <Link href={getRouteName(setting)} key={setting}>
-                                        <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                            <Typography textAlign="center">{setting}</Typography>
-                                        </MenuItem>
-                                    </Link>
-                                ))}
-                            </Menu>
-                        </Box>
+                        {user.isAuthenticated?
+                            <Box className={'flex items-center ml-[10px]'} sx={{ flexGrow: 0 }}>
+                                <Tooltip title="Open settings">
+                                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                        <Avatar alt={user.name??'User' } src={getServerImagesUrl(user.image??'')} />
+                                    </IconButton>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    {settings.map((setting) => (
+                                        <Link href={getRouteName(setting)} key={setting}>
+                                            <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                                <Typography textAlign="center">{setting}</Typography>
+                                            </MenuItem>
+                                        </Link>
+                                    ))}
+                                </Menu>
+                            </Box>
+                            :
+                            <div className={'flex gap-[10px] justify-center items-center'}>
+                                <Button sx={{padding:'5px',  width: 'fit-content', height:'fit-content'}} variant={'text'}>Log in</Button>
+                                <Button sx={{padding:'5px 10px',  width: 'fit-content', height:'fit-content'}} variant={'contained'}>Sign up</Button>
+                            </div>}
                     </div>
                 </Toolbar>
 
@@ -176,5 +182,5 @@ export default function DrawerAppBar(props: Props) {
 
 
 const getRouteName = (name:string)=>{
-    return  `/app/${name.toLowerCase().replace(' ', '-')}`
+    return  `/${name.toLowerCase().replace(' ', '-')}`
 }
