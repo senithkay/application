@@ -15,11 +15,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {ReactNode} from "react";
 import {Avatar, Badge, Menu, MenuItem, Tooltip} from "@mui/material";
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BasicPopover from "@/components/MIUI/notificationsPopOver";
+import {getServerImagesUrl} from "@/utils/functions";
+import {useAppSelector} from "@/redux/hooks";
 
 interface Props {
     window?: () => Window;
@@ -36,7 +37,7 @@ export default function DrawerAppBar(props: Props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const router = useRouter();
-
+    const user = useAppSelector(state => state.auth.auth);
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
@@ -117,7 +118,7 @@ export default function DrawerAppBar(props: Props) {
                         <Box className={'flex items-center ml-[10px]'} sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    <Avatar alt={user.name??'User' } src={getServerImagesUrl(user.image??'')} />
                                 </IconButton>
                             </Tooltip>
                             <Menu

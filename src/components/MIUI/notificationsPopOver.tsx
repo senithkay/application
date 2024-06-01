@@ -4,10 +4,13 @@ import IconButton from "@mui/material/IconButton";
 import {Badge} from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Divider from '@mui/material/Divider';
+import {useAppSelector} from "@/redux/hooks";
 
 
 export default function BasicPopover() {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
+    const userNotifications = useAppSelector(state => state.userNotifications.userNotification);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -28,7 +31,11 @@ export default function BasicPopover() {
                 color="inherit"
                 onClick={handleClick}
             >
-                <Badge badgeContent={17} color="error">
+                <Badge badgeContent={userNotifications.map((notification)=>{
+                    if (!notification.read){
+                        return notification;
+                    }
+                }).length} color="error">
                     <NotificationsIcon />
                 </Badge>
             </IconButton>
@@ -46,37 +53,14 @@ export default function BasicPopover() {
                     horizontal: 'right',
                 }}
             >
-                <div className={'p-[10px] w-[300px] flex flex-col h-[60vh] overflow-y-scroll'}>
-                    <p className={'font-bold mt-[10px]'}>We believe in quality over quantity</p>
-                    <p className={'text-gray-600 text-[14px] mb-[10px]'}>Each gem in our collection is meticulously
-                        selected
-                        for its exceptional beauty and rarity. We prioritize excellence,
-                        ensuring that every piece we offer meets the highest standards of
-                        craftsmanship and authenticity.</p>
-                    <Divider variant="middle" component="div"/>
-                    <p className={'font-bold mt-[10px]'}>We believe in quality over quantity</p>
-                    <p className={'text-gray-600 text-[14px] mb-[10px]'}>Each gem in our collection is meticulously
-                        selected
-                        for its exceptional beauty and rarity. We prioritize excellence,
-                        ensuring that every piece we offer meets the highest standards of
-                        craftsmanship and authenticity.</p>
-                    <Divider variant="middle" component="div"/>
-
-                    <p className={'font-bold mt-[10px]'}>We believe in quality over quantity</p>
-                    <p className={'text-gray-600 text-[14px] mb-[10px]'}>Each gem in our collection is meticulously
-                        selected
-                        for its exceptional beauty and rarity. We prioritize excellence,
-                        ensuring that every piece we offer meets the highest standards of
-                        craftsmanship and authenticity.</p>
-                    <Divider variant="middle" component="div"/>
-
-                    <p className={'font-bold mt-[10px]'}>We believe in quality over quantity</p>
-                    <p className={'text-gray-600 text-[14px] mb-[10px]'}>Each gem in our collection is meticulously
-                        selected
-                        for its exceptional beauty and rarity. We prioritize excellence,
-                        ensuring that every piece we offer meets the highest standards of
-                        craftsmanship and authenticity.</p>
-                    <Divider variant="middle" component="div"/>
+                <div className={'p-[10px] w-[300px] flex flex-col h-fit overflow-y-scroll max-h-[60vh]'}>
+                    {userNotifications.map((notification) => (
+                        <div key={notification.id}>
+                            <p className={'font-bold mt-[10px]'}>{notification.title}</p>
+                            <p className={'text-gray-600 text-[14px] mb-[10px]'}>{notification.description}</p>
+                            <Divider variant="middle" component="div"/>
+                        </div>
+                        ))}
                 </div>
             </Popover>
         </div>

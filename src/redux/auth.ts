@@ -5,6 +5,7 @@ export interface Auth {
     id:string | undefined;
     name:string | undefined;
     email:string | undefined;
+    image:string | undefined;
 }
 
 interface AuthState {
@@ -17,6 +18,7 @@ const initialState: AuthState = {
         id:undefined,
         name:undefined,
         email:undefined,
+        image:undefined,
     },
 }
 
