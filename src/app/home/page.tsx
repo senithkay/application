@@ -4,6 +4,70 @@ import Image from "next/image";
 import Button from "@mui/material/Button";
 import GemsCard from "@/components/gemsCard";
 
+
+const products = [
+    {
+        id: "1",
+        name: "Amethyst Cluster",
+        image: "/images/redGem.jpg",
+        shape: "Cluster",
+        color: "Purple",
+        gemType: "Amethyst",
+        treatments: ["Heat Treated"],
+        price: 99.99,
+    },
+    {
+        id: "2",
+        name: "Citrine Pendant",
+        image: "/images/redGem.jpg",
+        shape: "Oval",
+        color: "Yellow",
+        gemType: "Citrine",
+        treatments: ["None"],
+        price: 49.99,
+    },
+    {
+        id: "3",
+        name: "Ruby Cabochon",
+        image: "/placeholder.svg",
+        shape: "Cabochon",
+        color: "Red",
+        gemType: "Ruby",
+        treatments: ["Heat Treated"],
+        price: 199.99,
+    },
+    {
+        id: "4",
+        name: "Emerald Cushion Cut",
+        image: "/placeholder.svg",
+        shape: "Cushion",
+        color: "Green",
+        gemType: "Emerald",
+        treatments: ["Oiled"],
+        price: 299.99,
+    },
+    {
+        id: "5",
+        name: "Smoky Quartz Freeform",
+        image: "/placeholder.svg",
+        shape: "Freeform",
+        color: "Brown",
+        gemType: "Quartz",
+        treatments: ["None"],
+        price: 79.99,
+    },
+    {
+        id: "6",
+        name: "Sapphire Round Brilliant",
+        image: "/placeholder.svg",
+        shape: "Round",
+        color: "Blue",
+        gemType: "Sapphire",
+        treatments: ["Heat Treated"],
+        price: 399.99,
+    },
+];
+
 const Page = ()=> {
     return (
         <>
@@ -25,7 +89,7 @@ const Page = ()=> {
                         </p>
                         <div className="flex flex-col gap-2 min-[400px]:flex-row">
                            
-                           <Link href={"/app/shop"}>
+                           <Link href={"/shop"}>
                             <Button variant="contained" href="">
                                 Shop Now
                             </Button>
@@ -47,9 +111,9 @@ const Page = ()=> {
                     </div>
                     <div
                         className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
-                        <GemsCard image={'/images/blueGem.jpg'} title="Blue Gems" description="A Blue gem with great finish" price={20.00}/>
-                        <GemsCard image={'/images/redGem.jpg'} title="Red Gems" description="A Red gem with great finish" price={20.00}/>
-                        <GemsCard image={'/images/blueGem.jpg'} title="Blue Gems" description="A Blue gem with great finish" price={20.00}/>
+                        {products.map((product) => (
+                            <GemsCard key={product.id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product.id} treatments={product.treatments}/>
+                        ))}
                     </div>
                 </div>
             </section>
