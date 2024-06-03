@@ -99,7 +99,7 @@ const GemsCard = ({image, title, shape , color, gemType, id, treatments, price}:
                     ))}
                 </div>
                 <div className="mt-4 font-semibold">
-                    ${price.toFixed(2)}
+                    {`$${price.toFixed(2)}`}
                 </div>
                 <Button
                     variant="outlined"
