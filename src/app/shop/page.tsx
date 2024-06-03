@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import {useState, useMemo, useEffect} from "react";
 import {
   Accordion,
   AccordionItem,
@@ -9,10 +9,21 @@ import {
 } from "@/components/ui/accordion";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
 import GemsCard from "@/components/gemsCard";
+import axiosInstance from "@/utils/axiosInstance";
+import {RESPONSE_STATUS} from "@/utils/enums";
+
+interface Product {
+  _id:string;
+  name: string;
+  description: string;
+  color: string;
+  image:string;
+  price:number;
+  treatments:Array<string>;
+  shape:string;
+  gemType:string;
+}
 
 export default function Component() {
   const [filters, setFilters] = useState<any>({
@@ -21,68 +32,20 @@ export default function Component() {
     gemType: [],
     treatments: [],
   });
-  const products = [
-    {
-      id: "1",
-      name: "Amethyst Cluster",
-      image: "/images/redGem.jpg",
-      shape: "Cluster",
-      color: "Purple",
-      gemType: "Amethyst",
-      treatments: ["Heat Treated"],
-      price: 99.99,
-    },
-    {
-      id: "2",
-      name: "Citrine Pendant",
-      image: "/images/redGem.jpg",
-      shape: "Oval",
-      color: "Yellow",
-      gemType: "Citrine",
-      treatments: ["None"],
-      price: 49.99,
-    },
-    {
-      id: "3",
-      name: "Ruby Cabochon",
-      image: "/placeholder.svg",
-      shape: "Cabochon",
-      color: "Red",
-      gemType: "Ruby",
-      treatments: ["Heat Treated"],
-      price: 199.99,
-    },
-    {
-      id: "4",
-      name: "Emerald Cushion Cut",
-      image: "/placeholder.svg",
-      shape: "Cushion",
-      color: "Green",
-      gemType: "Emerald",
-      treatments: ["Oiled"],
-      price: 299.99,
-    },
-    {
-      id: "5",
-      name: "Smoky Quartz Freeform",
-      image: "/placeholder.svg",
-      shape: "Freeform",
-      color: "Brown",
-      gemType: "Quartz",
-      treatments: ["None"],
-      price: 79.99,
-    },
-    {
-      id: "6",
-      name: "Sapphire Round Brilliant",
-      image: "/placeholder.svg",
-      shape: "Round",
-      color: "Blue",
-      gemType: "Sapphire",
-      treatments: ["Heat Treated"],
-      price: 399.99,
-    },
-  ];
+
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axiosInstance.get('/gem')
+        .then((response)=>{
+          if (response.status === RESPONSE_STATUS.SUCCESS){
+            setProducts(response.data);
+          }
+        })
+  }, []);
+
+
+
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       if (filters.shape.length > 0 && !filters.shape.includes(product.shape)) {
@@ -107,7 +70,7 @@ export default function Component() {
       }
       return true;
     });
-  }, [filters]);
+  }, [filters.color, filters.gemType, filters.shape, filters.treatments, products]);
   const handleFilterChange = (type: string, value: string) => {
     setFilters((prevFilters: { [x: string]: any; }) => ({
       ...prevFilters,
@@ -353,9 +316,15 @@ export default function Component() {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProducts.map((product) => (
-            <GemsCard key={product.id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product.id} treatments={product.treatments}/>
-        ))}
+        {filteredProducts.length <= 0?
+            <>
+              <h2 className={'font-bold text-gray-500'}>No items to display. Try clearing filters</h2>
+            </> :
+        <>
+          {filteredProducts.map((product:Product) => (
+              <GemsCard key={product._id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments}/>
+          ))}</>
+        }
       </div>
     </div>
   );

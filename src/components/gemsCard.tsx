@@ -43,9 +43,9 @@ const GemsCard = ({image, title, shape , color, gemType, id, treatments, price}:
                     <span>{gemType}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-2">
-                    {/*{treatments.map((treatment, index) => (*/}
-                    {/*    <span key={index}>{treatment}</span>*/}
-                    {/*))}*/}
+                    {treatments.map((treatment, index) => (
+                        <span key={index}>{treatment}</span>
+                    ))}
                 </div>
                 <div className="mt-4 font-semibold">
                     ${price.toFixed(2)}
