@@ -1,71 +1,255 @@
-'use client';
-import Divider from "@mui/material/Divider";
-import {Facebook, Instagram, LinkedIn} from "@mui/icons-material";
-import Shake from "@/components/shake";
 
-const Footer = () => {
+import Link from "next/link"
+
+export default function Component() {
     return (
-       <>
-           <Divider className={'bg-gray-300 w-[90%] mx-auto'} orientation="horizontal" flexItem />
-           <div className={'w-full h-fit text-black flex justify-around py-[60px]'}>
-               <div><Explore /></div>
-               <div><Site /></div>
-               <div><OtherProducts /></div>
-               <div><Stats /></div>
-           </div>
-       </>
-    );
+        <footer className="bg-black w-full text-gray-400 py-12 md:py-16 lg:py-20">
+            <div className="container mx-auto px-4 md:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div className="flex flex-col items-start gap-4">
+                    <Link href="#" className="inline-flex items-center gap-2" prefetch={false}>
+                        <DiamondIcon className="w-8 h-8 text-primary" />
+                        <span className="text-2xl font-bold text-white">Loshan Gems</span>
+                    </Link>
+                    <p className="text-sm leading-relaxed">
+                        Discover the rarest and most exquisite gems from around the world. Our passion for gemstones is reflected in
+                        every piece we offer.
+                    </p>
+                </div>
+                <div className="grid gap-4">
+                    <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+                    <nav className="grid gap-2">
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            About
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            Shop
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            Contact
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            FAQ
+                        </Link>
+                    </nav>
+                </div>
+                <div className="grid gap-4">
+                    <h4 className="text-lg font-semibold text-white">Social</h4>
+                    <div className="flex items-center gap-3">
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            <FacebookIcon className="w-5 h-5" />
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            <TwitterIcon className="w-5 h-5" />
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            <InstagramIcon className="w-5 h-5" />
+                        </Link>
+                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                            <LinkedinIcon className="w-5 h-5" />
+                        </Link>
+                    </div>
+                </div>
+                <div className="grid gap-4">
+                    <h4 className="text-lg font-semibold text-white">Contact</h4>
+                    <div className="grid gap-2 text-sm">
+                        <div className="flex items-center gap-2">
+                            <PhoneIcon className="w-5 h-5" />
+                            <a href="#" className="hover:text-primary transition-colors">
+                                +1 (234) 567-890
+                            </a>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <InboxIcon className="w-5 h-5" />
+                            <a href="#" className="hover:text-primary transition-colors">
+                                info@gemco.com
+                            </a>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <LocateIcon className="w-5 h-5" />
+                            <span>123 Gem Street, Sparkle City, USA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container mx-auto px-4 md:px-6 lg:px-8 mt-8 md:mt-12 lg:mt-16 flex flex-col md:flex-row items-center justify-between">
+                <p className="text-sm">&copy; 2024 Gem Co. All rights reserved.</p>
+                <div className="flex items-center gap-4 mt-4 md:mt-0">
+                    <Link href="#" className="hover:text-primary transition-colors text-sm" prefetch={false}>
+                        Terms of Service
+                    </Link>
+                    <Link href="#" className="hover:text-primary transition-colors text-sm" prefetch={false}>
+                        Privacy Policy
+                    </Link>
+                </div>
+            </div>
+        </footer>
+    )
+}
+
+function DiamondIcon(props: any) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41l-7.59-7.59a2.41 2.41 0 0 0-3.41 0Z" />
+        </svg>
+    )
 }
 
 
-export default Footer;
-
-const Explore = () => {
+function FacebookIcon(props: any) {
     return (
-        <div className={'flex flex-col font-bold gap-[20px]'}>
-            <span className={'text-gray-500'}>Explore</span>
-            <span>New templates</span>
-            <span>Popular Templates</span>
-            <span>Contributors</span>
-        </div>
-    );
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+    )
 }
 
-const Site = () => {
+
+function InboxIcon(props: any) {
     return (
-        <div className={'flex flex-col font-bold gap-[20px]'}>
-            <span className={'text-gray-500'}>Site</span>
-            <span>License</span>
-            <span>About</span>
-            <span>Support</span>
-            <span>Sponsors</span>
-        </div>
-    );
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+            <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+        </svg>
+    )
 }
 
-const OtherProducts = () => {
+
+function InstagramIcon(props: any) {
     return (
-        <div className={'flex flex-col font-bold gap-[20px]'}>
-            <span className={'text-gray-500'}>Other Products</span>
-            <span>D+</span>
-            <span>CacheDB</span>
-        </div>
-    );
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+    )
 }
 
-const Stats = () => {
 
+function LinkedinIcon(props: any) {
     return (
-        <div className={'flex flex-col font-bold gap-[20px]'}>
-            <span className={'text-[30px] text-blue-600'}>Your Logo<br/></span>
-            <span className={'text-black'}><span className={'text-[30px]'}>76<br/></span> Template Files in Use</span>
-            <span className={'text-black'}><span className={'text-[30px]'}>20<br/></span> Paper Downloads</span>
-            <span className={'text-gray-500'}>Follow us</span>
-            <span className={'flex'}>
-                <Shake invert={true}><Instagram className={'text-[30px] hover:text-red-500 '}/></Shake>
-                <Shake invert={false}><Facebook className={'text-[30px] hover:text-blue-600 '}/></Shake>
-                <Shake invert={true}><LinkedIn className={'text-[30px] hover:text-blue-900 '}/></Shake>
-                </span>
-        </div>
-    );
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect width="4" height="12" x="2" y="9" />
+            <circle cx="4" cy="4" r="2" />
+        </svg>
+    )
+}
+
+
+function LocateIcon(props: any) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <line x1="2" x2="5" y1="12" y2="12" />
+            <line x1="19" x2="22" y1="12" y2="12" />
+            <line x1="12" x2="12" y1="2" y2="5" />
+            <line x1="12" x2="12" y1="19" y2="22" />
+            <circle cx="12" cy="12" r="7" />
+        </svg>
+    )
+}
+
+
+function PhoneIcon(props: any) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+    )
+}
+
+
+function TwitterIcon(props: any) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+        </svg>
+    )
 }
