@@ -323,10 +323,9 @@ export default function Component() {
             </> :
         <>
           {filteredProducts.map((product:Product) => (
-              <Link key={product._id} href="/shop/[id]" as={`/shop/${product._id}?type=${product.gemType}&name=${product.name}&color=${product.color}&shape=${product.shape}&treatments=${JSON.stringify(product.treatments)}&price=${product.price}&image=${product.image}`}>
-                <GemsCard key={product._id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments}/>
+             <GemsCard key={product._id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments}/>
 
-              </Link>
+
               ))}</>
         }
       </div>

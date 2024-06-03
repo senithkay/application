@@ -72,8 +72,8 @@ const GemsCard = ({image, title, shape , color, gemType, id, treatments, price}:
             key={id}
             className="bg-white dark:bg-gray-950 rounded-lg shadow-sm overflow-hidden"
         >
-            <Link href="#" className="block" prefetch={false}>
-                <Image
+            <Link key={id} href="/shop/[id]" as={`/shop/${id}?type=${gemType}&name=${title}&color=${color}&shape=${shape}&treatments=${JSON.stringify(treatments)}&price=${price}&image=${image}`}>
+            <Image
                     alt="Product Image"
                     className="object-cover w-full h-60 group-hover:opacity-50 transition-opacity"
                     height={300}
