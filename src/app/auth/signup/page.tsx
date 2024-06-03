@@ -2,9 +2,6 @@ import Image from "next/image";
 import Divider from "@mui/material/Divider";
 import {Checkbox, FormControlLabel, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
-import {Apple, Facebook, Google} from "@mui/icons-material";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 const page = () => {
     return (

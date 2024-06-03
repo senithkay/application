@@ -38,12 +38,11 @@ function SimpleSnackbar() {
   );
 
   return (
-    <div>
+    <>
         {
             notification.type === NOTIFICATION_TYPES.DEFAULT ? <></> :
                 <Snackbar
                     anchorOrigin={{ vertical:'top', horizontal:'center' }}
-                    className=' absolute'
                     open={notification.show}
                     autoHideDuration={6000}
                     onClose={handleClose}
@@ -96,7 +95,7 @@ function SimpleSnackbar() {
                     }
                 </Snackbar>
         }
-    </div>
+    </>
   );
 }
 

@@ -7,7 +7,7 @@ import axiosInstance from "@/utils/axiosInstance";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {RESPONSE_STATUS} from "@/utils/enums";
-import axios from "axios";
+
 
 interface ICredentials {
     email: string
@@ -25,7 +25,7 @@ const Page = () => {
         axiosInstance.post('/auth/login', credentials)
         .then((response)=>{
             if (response.status === RESPONSE_STATUS.SUCCESS){
-                router.push('/app/home')
+                router.push('/home')
             }
         })
 

@@ -4,6 +4,7 @@ import {authenticate} from "@/redux/auth";
 import {showHide} from "@/redux/notification";
 import {NOTIFICATION_TYPES, RESPONSE_STATUS} from "@/utils/enums";
 import {initUserNotifications} from "@/redux/userNotification";
+import {initCart} from "@/redux/cart";
 
 interface INotification {
     _id: string;
@@ -13,17 +14,35 @@ interface INotification {
     read: boolean;
 }
 
+interface Gem {
+    _id:string;
+    name: string;
+    description: string;
+    color: string;
+    image:string;
+    price:number;
+    treatments:Array<string>;
+    shape:string;
+    gemType:string;
+}
+
+export interface WishListItem {
+    _id:string;
+    gemId: Gem;
+    isDefaultPrice:boolean;
+    price:number
+}
+
 const axiosInstance = axios.create({
     baseURL: 'http://localhost:3000/',
     headers: {
         'Content-Type': 'application/json',
     },
+    withCredentials:true
 });
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        // You can modify the request config here, e.g., add authentication headers
-        // config.headers.Authorization = `Bearer ${getToken()}`;
         return config;
     },
     (error) => {
@@ -52,35 +71,45 @@ axiosInstance.interceptors.response.use(
                     read:notification.read
                 }
             })
-            store.dispatch(initUserNotifications(notifications));
+            const cart = user.wishList.map((wishListItem: WishListItem)=>{
+                return {
+                    _id: wishListItem._id,
+                    gemId: wishListItem.gemId,
+                    isDefaultPrice:wishListItem.isDefaultPrice,
+                    price:wishListItem.price,
+                }
+            })
+            store.dispatch(initCart(cart));
         }
         return response.data;
     },
     (error) => {
         const requestedUrl = error.response.config.url;
+        const requestedMethod = error.response.config.method;
         if (error.response.status === 401) {
-            handle401(requestedUrl)
+            handle401(requestedUrl, requestedMethod, error.response.data.description)
         }
 
         return errorResponse
     }
 );
 
-const handle401 = (requestedUrl:string)=>{
-    if (requestedUrl === '/auth/login') {
-        store.dispatch(showHide({
-            type:NOTIFICATION_TYPES.ERROR,
-            message:'Incorrect Username or password',
-            show:true
-        }))
-    }
-    else{
+const handle401 = (requestedUrl:string, requestedMethod:string, description:string)=>{
+    if (requestedUrl !== '/auth/login') {
         store.dispatch(authenticate({
             isAuthenticated:false,
             email: undefined,
             id: undefined,
             name:undefined,
             image:undefined
+        }))
+
+    }
+    else if (requestedMethod.toUpperCase() === 'POST'){
+        store.dispatch(showHide({
+            type:NOTIFICATION_TYPES.ERROR,
+            message:description,
+            show:true
         }))
     }
 }

@@ -12,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import GemsCard from "@/components/gemsCard";
 import axiosInstance from "@/utils/axiosInstance";
 import {RESPONSE_STATUS} from "@/utils/enums";
+import Link from "next/link";
 
 interface Product {
   _id:string;
@@ -322,8 +323,11 @@ export default function Component() {
             </> :
         <>
           {filteredProducts.map((product:Product) => (
-              <GemsCard key={product._id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments}/>
-          ))}</>
+              <Link key={product._id} href="/shop/[id]" as={`/shop/${product._id}?type=${product.gemType}&name=${product.name}&color=${product.color}&shape=${product.shape}&treatments=${JSON.stringify(product.treatments)}&price=${product.price}&image=${product.image}`}>
+                <GemsCard key={product._id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments}/>
+
+              </Link>
+              ))}</>
         }
       </div>
     </div>
