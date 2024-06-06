@@ -74,7 +74,7 @@ export default function Component() {
             <section>
                 <div className="container mx-auto p-4">
                     <div className="flex flex-col md:flex-row items-center ">
-                    
+
                         <Carousel className="w-full md:w-1/2 flex justify-center " >
                             <CarouselContent>
                                 <CarouselItem className="flex items-center justify-center">
@@ -206,15 +206,7 @@ export default function Component() {
                         {products.map((product) => (
                             <GemsCard key={product._id} image={product.image} title={product.name} price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments} />
                         ))}
-                        {products.map((product) => (
-                            <GemsCard key={product._id} image={product.image} title={product.name} price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments} />
-                        ))}
-                        {products.map((product) => (
-                            <GemsCard key={product._id} image={product.image} title={product.name} price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments} />
-                        ))}
-                        {products.map((product) => (
-                            <GemsCard key={product._id} image={product.image} title={product.name} price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments} />
-                        ))}
+
                     </div>
                 </div>
             </section>
