@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useMemo, useEffect} from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -11,19 +11,20 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import GemsCard from "@/components/gemsCard";
 import axiosInstance from "@/utils/axiosInstance";
-import {RESPONSE_STATUS} from "@/utils/enums";
+import { RESPONSE_STATUS } from "@/utils/enums";
 import Link from "next/link";
+import PaginationRounded from "@/components/pagination";
 
 interface Product {
-  _id:string;
+  _id: string;
   name: string;
   description: string;
   color: string;
-  image:string;
-  price:number;
-  treatments:Array<string>;
-  shape:string;
-  gemType:string;
+  image: string;
+  price: number;
+  treatments: Array<string>;
+  shape: string;
+  gemType: string;
 }
 
 export default function Component() {
@@ -38,11 +39,11 @@ export default function Component() {
 
   useEffect(() => {
     axiosInstance.get('/gem')
-        .then((response)=>{
-          if (response.status === RESPONSE_STATUS.SUCCESS){
-            setProducts(response.data);
-          }
-        })
+      .then((response) => {
+        if (response.status === RESPONSE_STATUS.SUCCESS) {
+          setProducts(response.data);
+        }
+      })
   }, []);
 
 
@@ -81,6 +82,7 @@ export default function Component() {
     }));
   };
   return (
+    <div>
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 p-4 md:p-6">
       <div className="bg-white dark:bg-gray-950 rounded-lg shadow-sm">
         <div className="p-4 border-b dark:border-gray-800">
@@ -316,19 +318,27 @@ export default function Component() {
           </Accordion>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredProducts.length <= 0?
-            <>
-              <h2 className={'font-bold text-gray-500'}>No items to display. Try clearing filters</h2>
-            </> :
-        <>
-          {filteredProducts.map((product:Product) => (
-             <GemsCard key={product._id} image={product.image} title={product.name}  price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments}/>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        {filteredProducts.length <= 0 ?
+          <>
+            <h2 className={'font-bold text-gray-500'}>No items to display. Try clearing filters</h2>
+          </> :
+          <>
+            {filteredProducts.map((product: Product) => (
+              <GemsCard key={product._id} image={product.image} title={product.name} price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments} />
 
 
-              ))}</>
+            ))}</>
         }
+       
+
       </div>
+      
+
+    </div>
+    <div className=" flex justify-center  items-center w-full pt-10  ">
+          <PaginationRounded />
+        </div>
     </div>
   );
 }
