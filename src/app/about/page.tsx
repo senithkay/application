@@ -100,8 +100,8 @@ export default function about() {
                             <h3 className="text-xl font-bold">Sarah Johnson</h3>
                             <p className="text-gray-500 dark:text-gray-400">Gemologist, 15 years of experience</p>
                             <p className="text-gray-500 dark:text-gray-400">
-                                Sarah's passion for gemstones and her extensive knowledge of their unique properties and origins make
-                                her an invaluable asset to our team.
+                                {' Sarah\'s passion for gemstones and her extensive knowledge of their unique properties and origins make\n' +
+                                    ' her an invaluable asset to our team.'}
                             </p>
                         </div>
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -115,8 +115,8 @@ export default function about() {
                             <h3 className="text-xl font-bold">Michael Chen</h3>
                             <p className="text-gray-500 dark:text-gray-400">Jewelry Designer, 10 years of experience</p>
                             <p className="text-gray-500 dark:text-gray-400">
-                                Michael's creative vision and technical expertise allow him to craft stunning, one-of-a-kind jewelry
-                                pieces that showcase the natural beauty of our gemstones.
+                                {'Michael\'s creative vision and technical expertise allow him to craft stunning, one-of-a-kind jewelry\n' +
+                                    '                                pieces that showcase the natural beauty of our gemstones.'}
                             </p>
                         </div>
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -130,8 +130,8 @@ export default function about() {
                             <h3 className="text-xl font-bold">Lila Patel</h3>
                             <p className="text-gray-500 dark:text-gray-400">Customer Service Manager, 8 years of experience</p>
                             <p className="text-gray-500 dark:text-gray-400">
-                                Lila's dedication to providing exceptional customer service and her deep understanding of our products
-                                ensure that every customer who walks through our doors has a truly unforgettable experience.
+                                {'Lila\'s dedication to providing exceptional customer service and her deep understanding of our products\n' +
+                                    '                                ensure that every customer who walks through our doors has a truly unforgettable experience.'}
                             </p>
                         </div>
                     </div>
