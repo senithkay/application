@@ -13,8 +13,8 @@ export default function Hero() {
                         Loshan Gems
                     </h1>
                     <p className="text-lg text-gray-500 md:text-xl dark:text-gray-400">
-                        Explore our exquisite collection of rare and precious gems, each one a unique masterpiece of nature's
-                        artistry.
+                        {'Explore our exquisite collection of rare and precious gems, each one a unique masterpiece of nature\'s\n' +
+                            'artistry.'}
                     </p>
                 </div>
                 <Link
