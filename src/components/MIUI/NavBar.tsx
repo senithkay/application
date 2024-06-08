@@ -14,7 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {ReactNode} from "react";
-import {Avatar, Badge, Menu, MenuItem, Tooltip} from "@mui/material";
+import {Avatar, Backdrop, Badge, CircularProgress, Menu, MenuItem, Tooltip} from "@mui/material";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -47,6 +47,8 @@ export default function DrawerAppBar(props: Props) {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const backdrop = useAppSelector(state => state.backdrop.backdrop);
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -177,6 +179,14 @@ export default function DrawerAppBar(props: Props) {
                     {drawer}
                 </Drawer>
             </nav>
+            <>
+                <Backdrop
+                    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                    open={backdrop.show}
+                >
+                    <CircularProgress color="inherit" />
+                </Backdrop>
+            </>
             <Box className={'flex justify-center items-center flex-col w-full'} component="main" sx={{ p: 3}}>
                 {children}
             </Box>
