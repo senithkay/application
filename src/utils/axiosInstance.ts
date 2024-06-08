@@ -34,7 +34,7 @@ export interface WishListItem {
 }
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000/',
+    baseURL: 'http://admin.loshangems.com/',
     headers: {
         'Content-Type': 'application/json',
     },
