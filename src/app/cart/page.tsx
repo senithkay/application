@@ -2,17 +2,21 @@
 import Link from "next/link"
 import { Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import { JSX, MouseEvent, SVGProps} from "react"
+import {JSX, MouseEvent, SVGProps, useState} from "react"
 import Image from "next/image";
 import GemsCard from "@/components/gemsCard";
 import {useAppSelector} from "@/redux/hooks";
-import {Popconfirm} from "antd";
+import {Input, Modal, Popconfirm} from "antd";
 import axiosInstance from "@/utils/axiosInstance";
 import {NOTIFICATION_TYPES, RESPONSE_STATUS} from "@/utils/enums";
 import store from "@/redux/store";
 import {showHide} from "@/redux/notification";
 import {addToCart, removeFromCart} from "@/redux/cart";
 
+interface PriceRequest{
+    gemId:string,
+    requestedPrice:number
+}
 
 const products = [
     {
@@ -97,8 +101,14 @@ const UnAuthorizedUserCart = () => {
     )
 }
 
+
 const CartDetails = () => {
     const wishList = useAppSelector(state => state.cart.cart);
+    const [openModel, setOpenModel] = useState(false);
+    const [priceRequest, setPriceRequest] = useState<PriceRequest>({
+        gemId:'',
+        requestedPrice:0
+    });
 
     const handleDelete = (id:string)=>{
         axiosInstance.delete(`/wishList/${id}`)
@@ -113,6 +123,44 @@ const CartDetails = () => {
                 }
             })
     }
+
+    const handleSendRequest = (gemId:string) =>{
+        setPriceRequest({...priceRequest, gemId:gemId})
+        setOpenModel(true)
+    }
+
+    const handleModelOk = ()=>{
+        setOpenModel(false)
+        axiosInstance.post(`/price-request`, priceRequest)
+            .then((response)=>{
+                if (response.status === RESPONSE_STATUS.SUCCESS){
+                    store.dispatch(showHide({
+                        type:NOTIFICATION_TYPES.INFO,
+                        message:'Your Request is sent to our staff. You will receive an email or a notification after the verification process completes',
+                        show:true
+                    }))
+                }
+                else{
+                    store.dispatch(showHide({
+                        type:NOTIFICATION_TYPES.ERROR,
+                        message:response.data.description,
+                        show:true
+                    }))
+                }
+                setPriceRequest({
+                    gemId:'',
+                    requestedPrice:0
+                })
+            })
+    }
+    const handleModelClose = ()=>{
+        setOpenModel(false)
+        setPriceRequest({
+            gemId:'',
+            requestedPrice:0
+        })
+    }
+
     return (
         <div className="grid md:grid-cols-[1fr_400px] gap-12">
             <div className="grid gap-8">
@@ -143,7 +191,7 @@ const CartDetails = () => {
                                         <p className="text-sm text-gray-500 dark:text-gray-400">{item.gemId.description}</p>
                                     </div>
                                     <div className="flex items-center gap-4">
-                                        <Button size={"large"}>Send an Offer</Button>
+                                        <Button size={"large"} onClick={()=>{handleSendRequest(item._id)}}>Send an Offer</Button>
                                         <h4 className="font-medium">{item.isDefaultPrice ? <>{item.gemId.price}<span className={'text-green-600 text-[10px] ml-[10px]'}>(Original)</span></> : <>{item.price}<span className={'text-red-600 text-[10px] ml-[10px]'}>(Negotiated)</span></>}</h4>
                                         <Popconfirm
                                             title="Remove Item"
@@ -206,6 +254,18 @@ const CartDetails = () => {
                         Checkout</Button>
                 </div>
             </div>
+            <Modal
+                title="Enter Your Desired Price here"
+                centered
+                open={openModel}
+                onOk={handleModelOk}
+                onCancel={handleModelClose}
+            >
+                <h3>Our team will review and make a decision. You will receive and email if your request is accepted</h3>
+                <Input placeholder="Your Offer" onChange={(event)=>{
+                    setPriceRequest({...priceRequest, requestedPrice:parseFloat(event.target.value)});
+                }}/>
+            </Modal>
         </div>
     )
 }
