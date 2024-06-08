@@ -1,5 +1,6 @@
 
 import Link from "next/link"
+import { IoLogoTiktok } from "react-icons/io5";
 
 export default function Footer() {
     return (
@@ -18,35 +19,31 @@ export default function Footer() {
                 <div className="grid gap-4">
                     <h4 className="text-lg font-semibold text-white">Quick Links</h4>
                     <nav className="grid gap-2">
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                        <Link href="/about" className="hover:text-primary transition-colors" prefetch={false}>
                             About
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                        <Link href="/shop" className="hover:text-primary transition-colors" prefetch={false}>
                             Shop
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                        <Link href="/contact" className="hover:text-primary transition-colors" prefetch={false}>
                             Contact
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
-                            FAQ
-                        </Link>
+                        
                     </nav>
                 </div>
                 <div className="grid gap-4">
                     <h4 className="text-lg font-semibold text-white">Social</h4>
                     <div className="flex items-center gap-3">
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                        <Link href="https://www.facebook.com/share/cEAxAWWeSEJwvJEp/?mibextid=LQQJ4d " className="hover:text-primary transition-colors" prefetch={false}>
                             <FacebookIcon className="w-5 h-5" />
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
-                            <TwitterIcon className="w-5 h-5" />
+                        <Link href="https://www.tiktok.com/@loshangems?_t=8n1QpBGp20u&_r=1" className="hover:text-primary transition-colors" prefetch={false}>
+                            <IoLogoTiktok className="w-5 h-5" />
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
+                        <Link href="https://www.instagram.com/loshangems?igsh=MWwwNm5xdGxpbDFpeQ%3D%3D&utm_source=qr" className="hover:text-primary transition-colors" prefetch={false}>
                             <InstagramIcon className="w-5 h-5" />
                         </Link>
-                        <Link href="#" className="hover:text-primary transition-colors" prefetch={false}>
-                            <LinkedinIcon className="w-5 h-5" />
-                        </Link>
+                      
                     </div>
                 </div>
                 <div className="grid gap-4">
@@ -55,18 +52,18 @@ export default function Footer() {
                         <div className="flex items-center gap-2">
                             <PhoneIcon className="w-5 h-5" />
                             <a href="#" className="hover:text-primary transition-colors">
-                                +1 (234) 567-890
+                                +94 77 123 4567
                             </a>
                         </div>
                         <div className="flex items-center gap-2">
                             <InboxIcon className="w-5 h-5" />
                             <a href="#" className="hover:text-primary transition-colors">
-                                info@gemco.com
+                            loshangems@gmail.com
                             </a>
                         </div>
                         <div className="flex items-center gap-2">
                             <LocateIcon className="w-5 h-5" />
-                            <span>123 Gem Street, Sparkle City, USA</span>
+                            <span>73/5, B Welivita, Kaduwela. Sri Lanka</span>
                         </div>
                     </div>
                 </div>
