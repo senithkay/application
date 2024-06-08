@@ -9,7 +9,7 @@ export default function Hero() {
         <section className="w-full flex justify-center items-center py-5 md:py-5 lg:py-32  bg-cover bg-center relative">
             <div>
                 <Image
-                    src="/images/project.jpg"
+                    src="/images/Project.jpg"
                     alt="Gems"
                     layout="fill"
                     className=" object-cover "
