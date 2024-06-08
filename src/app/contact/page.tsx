@@ -24,9 +24,9 @@ export default function Component() {
           </div>
         </div>
       </section>
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6 grid gap-12 lg:grid-cols-2 lg:gap-24">
-          <div>
+      <section className="w-full py-12 md:py-24 lg:py-32 justify-center items-center flex">
+        <div className="container px-4 md:px-6 grid gap-12 lg:grid-cols-2 lg:gap-24 justify-center">
+          <div className=" flex-1  items-center justify-center">
             <h2 className="text-3xl text-center font-bold mb-6">Get in Touch</h2>
             <form className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -51,8 +51,8 @@ export default function Component() {
                 Submit
               </Button>
             </form>
-          </div>
-          <div className="space-y-6">
+          </div >
+          <div className="space-y-6  items-center justify-items-center flex-col">
             <div>
               <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
               <div className="space-y-2">
