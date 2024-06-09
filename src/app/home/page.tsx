@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import GemsCatalog from "@/components/gemsCatalog";
 import SlideShow from "@/components/SlideShow";
 import Hero from "@/components/Hero";
+import RequestGems from "@/components/RequestGems";
+
 
 
 const Page = () => {
@@ -52,6 +54,11 @@ const Page = () => {
                     </div>
 
                 </div>
+            </section>
+           
+
+            <section>
+                <RequestGems />
             </section>
 
         </>
