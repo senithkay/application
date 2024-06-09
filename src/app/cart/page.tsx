@@ -15,7 +15,8 @@ import {addToCart, removeFromCart} from "@/redux/cart";
 
 interface PriceRequest{
     gemId:string,
-    requestedPrice:number
+    requestedPrice:number,
+    message:string,
 }
 
 const products = [
@@ -107,7 +108,8 @@ const CartDetails = () => {
     const [openModel, setOpenModel] = useState(false);
     const [priceRequest, setPriceRequest] = useState<PriceRequest>({
         gemId:'',
-        requestedPrice:0
+        requestedPrice:0,
+        message:''
     });
 
     const handleDelete = (id:string)=>{
@@ -149,7 +151,8 @@ const CartDetails = () => {
                 }
                 setPriceRequest({
                     gemId:'',
-                    requestedPrice:0
+                    requestedPrice:0,
+                    message:''
                 })
             })
     }
@@ -157,7 +160,8 @@ const CartDetails = () => {
         setOpenModel(false)
         setPriceRequest({
             gemId:'',
-            requestedPrice:0
+            requestedPrice:0,
+            message:''
         })
     }
 
@@ -191,7 +195,7 @@ const CartDetails = () => {
                                         <p className="text-sm text-gray-500 dark:text-gray-400">{item.gemId.description}</p>
                                     </div>
                                     <div className="flex items-center gap-4">
-                                        <Button size={"large"} onClick={()=>{handleSendRequest(item._id)}}>Send an Offer</Button>
+                                        <Button size={"large"} onClick={()=>{handleSendRequest(item.gemId._id)}}>Send an Offer</Button>
                                         <h4 className="font-medium">{item.isDefaultPrice ? <>{item.gemId.price}<span className={'text-green-600 text-[10px] ml-[10px]'}>(Original)</span></> : <>{item.price}<span className={'text-red-600 text-[10px] ml-[10px]'}>(Negotiated)</span></>}</h4>
                                         <Popconfirm
                                             title="Remove Item"
@@ -262,8 +266,11 @@ const CartDetails = () => {
                 onCancel={handleModelClose}
             >
                 <h3>Our team will review and make a decision. You will receive and email if your request is accepted</h3>
-                <Input placeholder="Your Offer" onChange={(event)=>{
+                <Input type='number' placeholder="Your Offer" onChange={(event)=>{
                     setPriceRequest({...priceRequest, requestedPrice:parseFloat(event.target.value)});
+                }}/>
+                <Input placeholder="Your Offer" onChange={(event)=>{
+                    setPriceRequest({...priceRequest, message:event.target.value});
                 }}/>
             </Modal>
         </div>
