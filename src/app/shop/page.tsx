@@ -14,6 +14,9 @@ import axiosInstance from "@/utils/axiosInstance";
 import { RESPONSE_STATUS } from "@/utils/enums";
 import Link from "next/link";
 import PaginationRounded from "@/components/pagination";
+import store from "@/redux/store";
+import {showHide} from "@/redux/loading";
+import {Skeleton} from "@mui/material";
 
 interface Product {
   _id: string;
@@ -36,12 +39,20 @@ export default function Component() {
   });
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    store.dispatch(showHide({
+      show:true
+    }))
     axiosInstance.get('/gem')
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESS) {
           setProducts(response.data);
+          setIsLoading(false)
+          store.dispatch(showHide({
+            show:false
+          }))
         }
       })
   }, []);
@@ -319,24 +330,32 @@ export default function Component() {
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-        {filteredProducts.length <= 0 ?
-          <>
-            <h2 className={'font-bold text-gray-500'}>No items to display. Try clearing filters</h2>
-          </> :
-          <>
-            {filteredProducts.map((product: Product) => (
-              <GemsCard key={product._id} image={product.image} title={product.name} price={product.price} shape={product.shape} gemType={product.gemType} color={product.color} id={product._id} treatments={product.treatments} />
+        {isLoading ?  <>
+          <Skeleton variant="rectangular" width={210} height={118} />
+          <Skeleton variant="rectangular" width={210} height={118} />
+          <Skeleton variant="rectangular" width={210} height={118} />
+          <Skeleton variant="rectangular" width={210} height={118} />
+          <Skeleton variant="rectangular" width={210} height={118} />
+        </> : (filteredProducts.length <= 0 ?
+            <>
+              <h2 className={'font-bold text-gray-500'}>No items to display. Try clearing filters</h2>
+            </> :
+            <>
+              {filteredProducts.map((product: Product) => (
+                  <GemsCard key={product._id} image={product.image} title={product.name} price={product.price}
+                            shape={product.shape} gemType={product.gemType} color={product.color} id={product._id}
+                            treatments={product.treatments}/>
 
 
-            ))}</>
+              ))}</>)
         }
-       
+
 
       </div>
-      
+
 
     </div>
-    <div className=" flex justify-center  items-center w-full pt-10  ">
+      <div className=" flex justify-center  items-center w-full pt-10  ">
           <PaginationRounded />
         </div>
     </div>

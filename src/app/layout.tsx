@@ -14,6 +14,12 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import DrawerAppBar from "@/components/MIUI/NavBar";
 import Footer from "@/components/footer";
+import Button from "@mui/material/Button";
+import {Backdrop, CircularProgress} from "@mui/material";
+import {useAppSelector} from "@/redux/hooks";
+import store from "@/redux/store";
+import {addToCart} from "@/redux/cart";
+import {showHide} from "@/redux/loading";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +29,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang='en'>
     <body className='bg-white overflow-auto'>
