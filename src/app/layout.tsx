@@ -33,6 +33,11 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
+    <head>
+
+      <title>Loshan Gems</title>
+      <meta name="google-site-verification" content="pQ4SicnT2iAXTHZlKCTxFRwXuhcWLDi7L4NIk-dGcxw"/>
+    </head>
     <body className='bg-white overflow-auto'>
     <Main>
       <div className={'relative mt-[100px]'}>
