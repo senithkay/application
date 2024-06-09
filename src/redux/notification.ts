@@ -23,7 +23,7 @@ export const notificationSlice = createSlice({
     name: "notification",
     initialState,
     reducers: {
-        showHide: (state, action: PayloadAction<Notification>) => {
+        showHideLoading: (state, action: PayloadAction<Notification>) => {
             state.notification = action.payload;
         }
     }

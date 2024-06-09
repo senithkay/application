@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import store from "@/redux/store";
 import axiosInstance from "@/utils/axiosInstance";
 import {RESPONSE_STATUS} from "@/utils/enums";
+import {showHideLoading} from "@/redux/loading";
 
 export default function Main({
                               children,
@@ -12,10 +13,15 @@ export default function Main({
     children: React.ReactNode;
 }>){
     useEffect(() => {
+        store.dispatch(showHideLoading({
+            show:true
+        }))
         axiosInstance.get('/auth/login')
             .then((response)=>{
                 if (response.status === RESPONSE_STATUS.SUCCESS){
-                    console.log(`User Authenticated as ${response.data.username}`);
+                    store.dispatch(showHideLoading({
+                        show:false
+                    }))
                 }
             })
     }, []);

@@ -18,11 +18,11 @@ export const backdropSlice = createSlice({
     name: "backdropSlice",
     initialState,
     reducers: {
-        showHide: (state, action: PayloadAction<Backdrop>) => {
+        showHideLoading: (state, action: PayloadAction<Backdrop>) => {
             state.backdrop = action.payload;
         }
     }
 })
 
 export default backdropSlice.reducer;
-export const {showHide} = backdropSlice.actions;
+export const {showHideLoading} = backdropSlice.actions;
