@@ -28,7 +28,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['Home','Services', 'About', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function DrawerAppBar(props: Props) {
@@ -151,10 +151,10 @@ export default function DrawerAppBar(props: Props) {
                             </Box>
                             :
                             <div className={'flex gap-[10px] justify-center items-center'}>
-                                <Button sx={{padding:'5px',  width: 'fit-content', height:'fit-content'}} variant={'text'} onClick={()=>{
+                                <Button sx={{padding:'5px',  width: 'fit-content', height:'fit-content',color:'black'}} variant={'text'} onClick={()=>{
                                     router.push('/auth/signin')
                                 }}>Log in</Button>
-                                <Button sx={{padding:'5px 10px',  width: 'fit-content', height:'fit-content'}} variant={'contained'} onClick={()=>{
+                                <Button sx={{padding:'5px 10px',  width: 'fit-content', height:'fit-content',backgroundColor:'black'}} variant={'contained'} onClick={()=>{
                                     router.push('/auth/signup')
                                 }}>Sign up</Button>
                             </div>}
