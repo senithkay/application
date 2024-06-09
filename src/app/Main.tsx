@@ -18,11 +18,9 @@ export default function Main({
         }))
         axiosInstance.get('/auth/login')
             .then((response)=>{
-                if (response.status === RESPONSE_STATUS.SUCCESS){
-                    store.dispatch(showHideLoading({
-                        show:false
-                    }))
-                }
+                store.dispatch(showHideLoading({
+                    show:false
+                }))
             })
     }, []);
     return <main>
