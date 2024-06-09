@@ -15,7 +15,7 @@ import { RESPONSE_STATUS } from "@/utils/enums";
 import Link from "next/link";
 import PaginationRounded from "@/components/pagination";
 import store from "@/redux/store";
-import {showHide} from "@/redux/loading";
+import {showHideLoading} from "@/redux/loading";
 import {Skeleton} from "@mui/material";
 
 interface Product {
@@ -42,7 +42,7 @@ export default function Component() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    store.dispatch(showHide({
+    store.dispatch(showHideLoading({
       show:true
     }))
     axiosInstance.get('/gem')
@@ -50,7 +50,7 @@ export default function Component() {
         if (response.status === RESPONSE_STATUS.SUCCESS) {
           setProducts(response.data);
           setIsLoading(false)
-          store.dispatch(showHide({
+          store.dispatch(showHideLoading({
             show:false
           }))
         }
