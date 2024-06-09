@@ -19,7 +19,7 @@ import {Backdrop, CircularProgress} from "@mui/material";
 import {useAppSelector} from "@/redux/hooks";
 import store from "@/redux/store";
 import {addToCart} from "@/redux/cart";
-import {showHideLoading} from "@/redux/loading";
+import {showHide} from "@/redux/loading";
 
 
 const inter = Inter({ subsets: ["latin"] });
