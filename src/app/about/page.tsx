@@ -21,12 +21,12 @@ export default function about() {
                                     Welcome to Loshan Gems
                                 </h1>
                                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-lg  text-sm dark:text-gray-400">
-                                    Nestled in the heart of our own mine, Loshan Gems sources the finest gemstones straight from nature's embrace.
+                                   {` Nestled in the heart of our own mine, Loshan Gems sources the finest gemstones straight from nature's embrace.
                                     With generations of expertise, our skilled gemologists use advanced heat treatments to enhance each stone's brilliance.
                                     Our in-house lapidary service features masterful cutters who sculpt gemstones with precision, revealing captivating cuts.
                                     At Loshan Gems, we are custodians of beauty, dedicated to crafting timeless treasures that transcend generations.
                                     Experience elegance with us, where every gem tells a story of unparalleled craftsmanship and natural splendor.anscend generations.
-                                    Experience the epitome of elegance with us, where every gem tells a story of unparalleled craftsmanship and natural splendor.
+                                    Experience the epitome of elegance with us, where every gem tells a story of unparalleled craftsmanship and natural splendor.`}
                                 </p>
                             </div>
                         </div>
@@ -43,7 +43,7 @@ export default function about() {
                             Integrity, Expertise, and Passion
                         </h2>
                         <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            At Loshan Gems, our dedication to excellence is unwavering. With a steadfast commitment to integrity, expertise, and unwavering passion, we meticulously source the most exquisite gemstones and deliver unparalleled customer service. Guided by our core values, we strive to stand out as the ultimate haven for gemstone aficionados.
+                            At Loshan Gems, our dedication to excellence is unwavering. With a steadfast commitment to integrity, expertise, and unwavering passion, we meticulously source the most exquisite gemstones and deliver unparalleled customer service. Guided by our core values, we strive to stand out as the ultimate haven for gemstone aficionados.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -118,7 +118,7 @@ export default function about() {
                             Ethically Sourced, Expertly Curated
                         </h2>
                         <p className="mx-auto max-w-[1000px] text-sm text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            where our commitment to excellence is matched only by our dedication to ethical practices. At Loshan Gems, we pride ourselves on our meticulous sourcing process, ensuring that each gemstone we offer is of the highest quality and ethically obtained. Our team of experts traverses the globe to hand-select the finest gems, working directly with trusted suppliers and mines to guarantee the integrity and sustainability of our supply chain. Rest assured, when you choose Loshan Gems, you're not just purchasing a beautiful gemstone—you're investing in a legacy of responsible sourcing and expert curation. Experience the difference with Loshan Gems, where every stone tells a story of ethical excellence.
+                            where our commitment to excellence is matched only by our dedication to ethical practices. At Loshan Gems, we pride ourselves on our meticulous sourcing process, ensuring that each gemstone we offer is of the highest quality and ethically obtained. Our team of experts traverses the globe to hand-select the finest gems, working directly with trusted suppliers and mines to guarantee the integrity and sustainability of our supply chain. Rest assured, when you choose Loshan Gems, you're not just purchasing a beautiful gemstone—you are investing in a legacy of responsible sourcing and expert curation. Experience the difference with Loshan Gems, where every stone tells a story of ethical excellence.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
