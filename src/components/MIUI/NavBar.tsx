@@ -28,7 +28,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home','Services', 'About', 'Contact'];
+const navItems = ['Home','Shop','Services', 'About', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function DrawerAppBar(props: Props) {
