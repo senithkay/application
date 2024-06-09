@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className="flex flex-col items-start gap-4">
                     <Link href="#" className="inline-flex items-center gap-2" prefetch={false}>
                         <DiamondIcon className="w-8 h-8 text-primary" />
-                        <span className="text-2xl font-bold text-white">Loshan Gems</span>
+                        <span className="text-2xl font-bold text-white">Loshan Gems (Pvt) </span>
                     </Link>
                     <p className="text-sm leading-relaxed">
                         Discover the rarest and most exquisite gems from around the world. Our passion for gemstones is reflected in

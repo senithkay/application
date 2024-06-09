@@ -17,13 +17,16 @@ export default function about() {
                         </div>
                         <div className="flex flex-col items-start space-y-4">
                             <div className="space-y-2">
-                                <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
+                                <h1 className="lg:leading-tighter text-2xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                                     Welcome to Loshan Gems
                                 </h1>
-                                <p className="max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                                    Gem Emporium is a family-owned business that has been providing the finest gemstones and jewelry for
-                                    over 50 years. Our passion for quality and customer satisfaction is at the heart of everything we
-                                    do.
+                                <p className="mx-auto max-w-[700px] text-gray-500 md:text-lg  text-sm dark:text-gray-400">
+                                    Nestled in the heart of our own mine, Loshan Gems sources the finest gemstones straight from nature's embrace.
+                                    With generations of expertise, our skilled gemologists use advanced heat treatments to enhance each stone's brilliance.
+                                    Our in-house lapidary service features masterful cutters who sculpt gemstones with precision, revealing captivating cuts.
+                                    At Loshan Gems, we are custodians of beauty, dedicated to crafting timeless treasures that transcend generations.
+                                    Experience elegance with us, where every gem tells a story of unparalleled craftsmanship and natural splendor.anscend generations.
+                                    Experience the epitome of elegance with us, where every gem tells a story of unparalleled craftsmanship and natural splendor.
                                 </p>
                             </div>
                         </div>
@@ -40,9 +43,7 @@ export default function about() {
                             Integrity, Expertise, and Passion
                         </h2>
                         <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            At Gem Emporium, we are committed to upholding the highest standards of integrity, expertise, and
-                            passion in everything we do. From sourcing the finest gemstones to providing exceptional customer
-                            service, our values guide us in our mission to be the premier destination for gemstone enthusiasts.
+                            At Loshan Gems, our dedication to excellence is unwavering. With a steadfast commitment to integrity, expertise, and unwavering passion, we meticulously source the most exquisite gemstones and deliver unparalleled customer service. Guided by our core values, we strive to stand out as the ultimate haven for gemstone aficionados.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -58,8 +59,7 @@ export default function about() {
                             <FocusIcon className="w-12 h-12 text-primary" />
                             <h3 className="text-xl font-bold">Expertise</h3>
                             <p className="text-gray-500 dark:text-gray-400">
-                                Our team of gemologists and jewelry experts have decades of experience in the industry, ensuring our
-                                customers receive the highest level of knowledge and guidance.
+                            Our team of seasoned gemologists and master Gem Cutters boast decades of collective expertise in the industry, guaranteeing our customers unparalleled knowledge and guidance.
                             </p>
                         </div>
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -88,37 +88,8 @@ export default function about() {
                             highest level of knowledge, guidance, and personalized service.
                         </p>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                            <img
-                                src="/placeholder.svg"
-                                width="200"
-                                height="200"
-                                alt="Team Member 1"
-                                className="rounded-full w-24 h-24 object-cover"
-                            />
-                            <h3 className="text-xl font-bold">Sarah Johnson</h3>
-                            <p className="text-gray-500 dark:text-gray-400">Gemologist, 15 years of experience</p>
-                            <p className="text-gray-500 dark:text-gray-400">
-                                {' Sarah\'s passion for gemstones and her extensive knowledge of their unique properties and origins make\n' +
-                                    ' her an invaluable asset to our team.'}
-                            </p>
-                        </div>
-                        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                            <img
-                                src="/placeholder.svg"
-                                width="200"
-                                height="200"
-                                alt="Team Member 2"
-                                className="rounded-full w-24 h-24 object-cover"
-                            />
-                            <h3 className="text-xl font-bold">Michael Chen</h3>
-                            <p className="text-gray-500 dark:text-gray-400">Jewelry Designer, 10 years of experience</p>
-                            <p className="text-gray-500 dark:text-gray-400">
-                                {'Michael\'s creative vision and technical expertise allow him to craft stunning, one-of-a-kind jewelry\n' +
-                                    '                                pieces that showcase the natural beauty of our gemstones.'}
-                            </p>
-                        </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 justify-center items-center max-w-[700px]">
+
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
                             <img
                                 src="/placeholder.svg"
@@ -127,7 +98,7 @@ export default function about() {
                                 alt="Team Member 3"
                                 className="rounded-full w-24 h-24 object-cover"
                             />
-                            <h3 className="text-xl font-bold">Lila Patel</h3>
+                            <h3 className="text-xl font-bold">Loshan De Silva</h3>
                             <p className="text-gray-500 dark:text-gray-400">Customer Service Manager, 8 years of experience</p>
                             <p className="text-gray-500 dark:text-gray-400">
                                 {'Lila\'s dedication to providing exceptional customer service and her deep understanding of our products\n' +
@@ -146,11 +117,8 @@ export default function about() {
                         <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                             Ethically Sourced, Expertly Curated
                         </h2>
-                        <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            At Gem Emporium, we take great pride in our meticulous sourcing process, ensuring that every gemstone we
-                            offer is of the highest quality and ethically obtained. Our team of experts travels the world to
-                            hand-select the finest gems, working directly with trusted suppliers and mines to guarantee the
-                            integrity and sustainability of our supply chain.
+                        <p className="mx-auto max-w-[1000px] text-sm text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                            where our commitment to excellence is matched only by our dedication to ethical practices. At Loshan Gems, we pride ourselves on our meticulous sourcing process, ensuring that each gemstone we offer is of the highest quality and ethically obtained. Our team of experts traverses the globe to hand-select the finest gems, working directly with trusted suppliers and mines to guarantee the integrity and sustainability of our supply chain. Rest assured, when you choose Loshan Gems, you're not just purchasing a beautiful gemstone—you're investing in a legacy of responsible sourcing and expert curation. Experience the difference with Loshan Gems, where every stone tells a story of ethical excellence.
                         </p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
