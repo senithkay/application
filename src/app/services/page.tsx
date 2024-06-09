@@ -13,10 +13,10 @@ export default function services() {
                                 HEAT TREATMENT OF GEMSTONES
                             </h1>
                             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                                In the realm of gemstones, where every facet tells a story of natural wonder, Loshan Gems stands as a beacon of innovation and excellence.
+                             {`   In the realm of gemstones, where every facet tells a story of natural wonder, Loshan Gems stands as a beacon of innovation and excellence.
                                 Our commitment to preserving the intrinsic beauty of gemstones while enhancing their allure has led us to master the art of gem heat treatment.
                                 In this article, we invite you to explore our distinctive approach to gem heat treatment, where precision meets passion to unveil the true brilliance
-                                within each gemstone.
+                                within each gemstone.`}
 
                             </p>
                             <Link
@@ -43,10 +43,10 @@ export default function services() {
                                 <div className="space-y-2 pt-4">
                                     <h2 className="text-2xl font-bold">Customized Treatment Protocols</h2>
                                     <p className="text-gray-500 dark:text-gray-400">
-                                        We understand that each gemstone is unique, possessing its own distinct composition and characteristics.
+                                      {`  We understand that each gemstone is unique, possessing its own distinct composition and characteristics.
                                         Therefore, we tailor our heat treatment protocols to suit the specific needs of each gemstone,
                                         taking into account factors such as mineral composition, color saturation, and clarity.
-                                        This personalized approach ensures optimal results, maximizing the beauty and value of every gemstone entrusted to our care.
+                                        This personalized approach ensures optimal results, maximizing the beauty and value of every gemstone entrusted to our care.`}
 
                                     </p>
                                 </div>
@@ -62,12 +62,12 @@ export default function services() {
                                 <div className="space-y-2 pt-4">
                                     <h2 className="text-2xl font-bold">Controlled Atmosphere Heating</h2>
                                     <p className="text-gray-500 dark:text-gray-400">
-                                        One of the hallmarks of our gem heat treatment process is the use of controlled atmosphere heating environments.
+                                       {` One of the hallmarks of our gem heat treatment process is the use of controlled atmosphere heating environments.
                                         By carefully regulating the atmosphere surrounding the gemstones during heating,
                                         we minimize the risk of unwanted reactions and ensure uniform heat distribution.
                                         This precise control allows us to achieve consistent and predictable results,
                                         enhancing the color, clarity, and overall appearance of the gemstones.
-
+`}
 
                                     </p>
                                 </div>
@@ -83,11 +83,11 @@ export default function services() {
                                 <div className="space-y-2 pt-4">
                                     <h2 className="text-2xl font-bold">Ethical and Sustainable Practices</h2>
                                     <p className="text-gray-500 dark:text-gray-400">
-                                        At Loshan Gems, ethical considerations are at the forefront of everything we do.
+                                        {`At Loshan Gems, ethical considerations are at the forefront of everything we do.
                                         We adhere to strict ethical and sustainability standards throughout our heat treatment process,
                                         ensuring that our practices are environmentally responsible and socially conscious.
                                         From sourcing ethically mined gemstones to employing energy-efficient heating technologies,
-                                        we strive to minimize our environmental footprint and uphold the highest ethical standards in the industry.
+                                        we strive to minimize our environmental footprint and uphold the highest ethical standards in the industry.`}
 
                                     </p>
                                 </div>
@@ -103,10 +103,10 @@ export default function services() {
                                 <div className="space-y-2 pt-4">
                                     <h2 className="text-2xl font-bold">Conclusion</h2>
                                     <p className="text-gray-500 dark:text-gray-400">
-                                        In the world of gemstones, where beauty is measured in brilliance and rarity, Loshan Gems stands as a beacon of excellence.
+                                       {` In the world of gemstones, where beauty is measured in brilliance and rarity, Loshan Gems stands as a beacon of excellence.
                                         Our distinctive approach to gem heat treatment combines precision, innovation, and ethical practices to unlock the true potential of every gemstone we touch.
                                         With our commitment to quality, integrity,
-                                        and sustainability, we continue to set the standard for excellence in the gemstone industry, illuminating the brilliance of nature's most precious treasures.
+                                        and sustainability, we continue to set the standard for excellence in the gemstone industry, illuminating the brilliance of nature's most precious treasures.`}
                                     </p>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ export default function services() {
                         <div className="space-y-3">
                             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Contact Us</h2>
                             <p className="mx-auto max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                                Fill out the form below to  heat treatment of gemstone .
+                                Fill out the form below to  heat treatment of gemstone.
                             </p>
                         </div>
                         <div className="mx-auto w-full max-w-sm space-y-2">
