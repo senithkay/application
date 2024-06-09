@@ -11,12 +11,7 @@ export default function gemsCatalog() {
       image: "/images/ruby.webp",
       type: "Corundum",
     },
-    {
-      id: 2,
-      name: "Emerald",
-      image: "/images/emerald.jpg",
-      type: "Beryl",
-    },
+ 
     {
       id: 3,
       name: "Sapphire",
@@ -35,35 +30,19 @@ export default function gemsCatalog() {
       image: "/images/diamond.webp",
       type: "Carbon",
     },
-    {
-      id: 6,
-      name: "Topaz",
-      image: "/images/topaz.jpg",
-      type: "Silicate",
-    },
-    {
-      id: 7,
-      name: "Opal",
-      image: "/images/opal.png",
-      type: "Hydrous Silica",
-    },
-    {
-      id: 8,
-      name: "Garnet",
-      image: "/images/garnet.jpg",
-      type: "Silicate",
-    },
+ 
+
 
   ]
   return (
     <section className="container  md:px-2 py-1 md:py-4">
       <div className="grid gap-8 md:gap-12">
 
-        <div className="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-5 gap-2 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-2 md:gap-8 items-center justify-center">
           {gems.map((gem) => (
             <div
               key={gem.id}
-              className=" relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2"
+              className=" justify-center items-center relative group overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-transform duration-300 ease-in-out hover:-translate-y-2"
             >
               <Link href="#" className="absolute inset-0 z-10" prefetch={false}>
                 <span className="sr-only">View {gem.name}</span>
