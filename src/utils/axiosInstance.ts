@@ -3,7 +3,6 @@ import store from "@/redux/store";
 import {authenticate} from "@/redux/auth";
 import {showHide} from "@/redux/notification";
 import {NOTIFICATION_TYPES, RESPONSE_STATUS} from "@/utils/enums";
-import {initUserNotifications} from "@/redux/userNotification";
 import {initCart} from "@/redux/cart";
 
 interface INotification {
@@ -81,6 +80,7 @@ axiosInstance.interceptors.response.use(
             })
             store.dispatch(initCart(cart));
         }
+
         return response.data;
     },
     (error) => {
@@ -90,7 +90,7 @@ axiosInstance.interceptors.response.use(
             handle401(requestedUrl, requestedMethod, error.response.data.description)
         }
 
-        return errorResponse
+        return error.response.data
     }
 );
 
@@ -114,10 +114,6 @@ const handle401 = (requestedUrl:string, requestedMethod:string, description:stri
     }
 }
 
-const errorResponse = {
-    status : RESPONSE_STATUS.ERROR,
-    data : {},
-    description : ""
-};
+
 
 export default axiosInstance;

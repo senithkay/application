@@ -17,6 +17,7 @@ import PaginationRounded from "@/components/pagination";
 import store from "@/redux/store";
 import {showHideLoading} from "@/redux/loading";
 import {Skeleton} from "@mui/material";
+import {Empty} from "antd";
 
 interface Product {
   _id: string;
@@ -337,9 +338,16 @@ export default function Component() {
           <Skeleton variant="rectangular" width={210} height={118} />
           <Skeleton variant="rectangular" width={210} height={118} />
         </> : (filteredProducts.length <= 0 ?
-            <>
-              <h2 className={'font-bold text-gray-500'}>No items to display. Try clearing filters</h2>
-            </> :
+            <Empty
+                image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+                imageStyle={{ height: 60 }}
+                description={
+                  <span>
+                      No items to display. Try clearing filters
+                  </span>
+                }
+            >
+            </Empty> :
             <>
               {filteredProducts.map((product: Product) => (
                   <GemsCard key={product._id} image={product.image} title={product.name} price={product.price}

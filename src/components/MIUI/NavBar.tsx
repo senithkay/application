@@ -32,6 +32,7 @@ const navItems = ['Home','Shop','Services', 'About', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function DrawerAppBar(props: Props) {
+    const wishList = useAppSelector(state => state.cart.cart);
     const { window } = props;
     const {children} = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -108,7 +109,7 @@ export default function DrawerAppBar(props: Props) {
                             <IconButton size="small" aria-label="show 4 new mails" color="inherit" onClick={()=>{
                                 router.push(getRouteName('cart'))
                             }}>
-                                <Badge badgeContent={4} color="error">
+                                <Badge badgeContent={wishList.length} color="error">
                                     <ShoppingCartIcon />
                                 </Badge>
                             </IconButton>
