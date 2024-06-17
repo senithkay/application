@@ -18,6 +18,9 @@ import store from "@/redux/store";
 import {showHideLoading} from "@/redux/loading";
 import {Skeleton} from "@mui/material";
 import {Empty} from "antd";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import * as React from "react";
 
 interface Product {
   _id: string;
@@ -41,6 +44,8 @@ export default function Component() {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [numberOfPages, setNumberOfPages] = useState(1)
+  const [page, setPage] = React.useState(1);
 
   useEffect(() => {
     store.dispatch(showHideLoading({
@@ -49,8 +54,9 @@ export default function Component() {
     axiosInstance.get('/gem')
       .then((response) => {
         if (response.status === RESPONSE_STATUS.SUCCESS) {
-          setProducts(response.data);
+          setProducts(response.data.gems);
           setIsLoading(false)
+          setNumberOfPages(response.data.numberOfPages);
           store.dispatch(showHideLoading({
             show:false
           }))
@@ -60,31 +66,29 @@ export default function Component() {
 
 
 
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      if (filters.shape.length > 0 && !filters.shape.includes(product.shape)) {
-        return false;
-      }
-      if (filters.color.length > 0 && !filters.color.includes(product.color)) {
-        return false;
-      }
-      if (
-        filters.gemType.length > 0 &&
-        !filters.gemType.includes(product.gemType)
-      ) {
-        return false;
-      }
-      if (
-        filters.treatments.length > 0 &&
-        !filters.treatments.some((treatment: string) =>
-          product.treatments.includes(treatment)
-        )
-      ) {
-        return false;
-      }
-      return true;
-    });
-  }, [filters.color, filters.gemType, filters.shape, filters.treatments, products]);
+
+
+  useEffect(() => {
+    const payload = {...filters , page : page }
+    store.dispatch(showHideLoading({
+      show:true
+    }))
+    axiosInstance.post('/gem', payload)
+        .then((response) => {
+          if (response.status === RESPONSE_STATUS.SUCCESS) {
+            setProducts(response.data);
+            setIsLoading(false)
+            store.dispatch(showHideLoading({
+              show:false
+            }))
+          }
+        })
+  }, [filters]);
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
   const handleFilterChange = (type: string, value: string) => {
     setFilters((prevFilters: { [x: string]: any; }) => ({
       ...prevFilters,
@@ -337,7 +341,7 @@ export default function Component() {
           <Skeleton variant="rectangular" width={210} height={118} />
           <Skeleton variant="rectangular" width={210} height={118} />
           <Skeleton variant="rectangular" width={210} height={118} />
-        </> : (filteredProducts.length <= 0 ?
+        </> : (products.length <= 0 ?
             <Empty
                 image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
                 imageStyle={{ height: 60 }}
@@ -349,7 +353,7 @@ export default function Component() {
             >
             </Empty> :
             <>
-              {filteredProducts.map((product: Product) => (
+              {products.map((product: Product) => (
                   <GemsCard key={product._id} image={product.image} title={product.name} price={product.price}
                             shape={product.shape} gemType={product.gemType} color={product.color} id={product._id}
                             treatments={product.treatments}/>
@@ -364,7 +368,10 @@ export default function Component() {
 
     </div>
       <div className=" flex justify-center  items-center w-full pt-10  ">
-          <PaginationRounded />
+        <Stack spacing={2}>
+          <Pagination count={numberOfPages} onChange={handlePageChange}  shape="rounded" />
+
+        </Stack>
         </div>
     </div>
   );
