@@ -19,8 +19,8 @@ export default function Component() {
               <div>
                 <h3 className="text-lg font-semibold mb-2">Faceting</h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Our faceting process involves carefully cutting and polishing the gemstone to create a precise,
-                  symmetrical shape that maximizes the stone's brilliance and fire.
+                  {` Our faceting process involves carefully cutting and polishing the gemstone to create a precise,
+                  symmetrical shape that maximizes the stone's brilliance and fire.`}
                 </p>
               </div>
               <div>
@@ -80,8 +80,8 @@ export default function Component() {
         <div className="mt-12 md:mt-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            If you have any questions about our gem cutting services or would like to inquire about a custom cutting
-            project, please don't hesitate to reach out. Our team of experts is here to help.
+            {`  If you have any questions about our gem cutting services or would like to inquire about a custom cutting
+            project, please don't hesitate to reach out. Our team of experts is here to help.`}
           </p>
           <form className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <Input type="text" placeholder="Name" />
