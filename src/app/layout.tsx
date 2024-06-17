@@ -14,12 +14,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import DrawerAppBar from "@/components/MIUI/NavBar";
 import Footer from "@/components/footer";
-import Button from "@mui/material/Button";
-import {Backdrop, CircularProgress} from "@mui/material";
-import {useAppSelector} from "@/redux/hooks";
-import store from "@/redux/store";
-import {addToCart} from "@/redux/cart";
-import {showHide} from "@/redux/loading";
+
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -33,6 +28,11 @@ export default function RootLayout({
 
   return (
     <html lang='en'>
+    <head>
+
+      <title>Loshan Gems</title>
+      <meta name="google-site-verification" content="pQ4SicnT2iAXTHZlKCTxFRwXuhcWLDi7L4NIk-dGcxw"/>
+    </head>
     <body className='bg-white overflow-auto'>
     <Main>
       <div className={'relative mt-[100px]'}>
